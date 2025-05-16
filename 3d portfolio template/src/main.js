@@ -19,7 +19,6 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.setZ(30);
 
-
 renderer.render(scene, camera);
 const geometry = new THREE.TorusGeometry(10, 3, 16, 60);
 const material = new THREE.MeshStandardMaterial({color: 0xFF6347});
@@ -62,6 +61,82 @@ function onDocumentKeyDown(event) {
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
+
+
+const testTexture = new THREE.TextureLoader().load('clione.gif');
+
+const clione = new THREE.Mesh(
+  new THREE.BoxGeometry(3,3,3),
+  new THREE.MeshStandardMaterial( {map: testTexture })
+)
+
+
+// scene.add(clione)
+
+const texture = new THREE.TextureLoader().load('background.jpg');
+scene.background = texture;
+
+// Resize handler
+function onWindowResize() {
+  // need to adjust to stay centered, and maintain ideal ratio of 16:9
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  rednerersetSize(window.innerWidth, window.innerHeight);
+}
+
+const targetPlaneSize = {width: 15, height: 15}
+const targetPlanePosition = {x: -15, y: 7.5, z: -15}
+// target for projection of other game lol
+const renderTarget = new THREE.WebGLRenderTarget(
+  targetPlaneSize.width * 512,
+  targetPlaneSize.height * 512);
+
+// same as main cam
+const secondaryCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+// need to angle it appropriately for the plane, matching consts would be smart
+secondaryCamera.position.set(
+  targetPlanePosition.x,
+  targetPlanePosition.y + 4,
+  targetPlanePosition.z)
+// secondaryCamera.rotation.y = 45
+secondaryCamera.lookAt(new THREE.Vector3(0, 5, -10));
+
+const secondaryScene = new THREE.Scene();
+secondaryScene.background = new THREE.Color(0xD61C4E);
+const secondaryDirectionalLight = new THREE.DirectionalLight(0xFFFFFF, 1);
+secondaryScene.add(secondaryCamera, secondaryDirectionalLight)
+
+// torus.position.set(targetPlanePosition)
+
+// secondaryScene.add(torus);
+const cube = new THREE.Mesh(new THREE.BoxGeometry(15,15,15), new THREE.MeshStandardMaterial)
+cube.castShadow = true
+clione.castShadow = true
+
+cube.position.set(-50, 0,-50)
+clione.position.set(-25,3,-25)
+
+secondaryScene.add(cube, clione)
+
+
+const targetMat = new THREE.MeshPhongMaterial({
+  map: renderTarget.texture
+  // working, pog
+});
+const targetPlane = new THREE.Mesh(new THREE.PlaneGeometry(
+  targetPlaneSize.width,
+  targetPlaneSize.height, 32), targetMat);
+targetPlane.rotation.y = 45
+targetPlane.position.set(-15, 7.5, -12)
+
+scene.add(targetPlane);
+
+function cameraProject(){
+  secondaryCamera.rotation.x = camera.rotation.x
+  secondaryCamera.rotation.y = camera.rotation.y
+  secondaryCamera.rotation.z = camera.rotation.z
+}
+
 function addStar() {
   const geometry = new THREE.SphereGeometry(0.35)
   const material = new THREE.MeshStandardMaterial( {color: 0xffffff})
@@ -70,31 +145,39 @@ function addStar() {
   const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread( 100) );
   star.position.set(x,y,z)
   scene.add(star)
+  secondaryScene.add(star)
 }
 
 Array(200).fill().forEach(addStar)
 
-const testTexture = new THREE.TextureLoader().load('clione.gif');
-
-const clione = new THREE.Mesh(
-  new THREE.BoxGeometry(3,3,3),
-  new THREE.MeshBasicMaterial( {map: testTexture })
-)
-
-clione.position.set(15,0,0)
-
-scene.add(clione)
-
-const texture = new THREE.TextureLoader().load('background.jpg');
-scene.background = texture;
-
-function animate() {
-  requestAnimationFrame(animate);
+function rotations(){
   torus.rotation.x += 0.01;
   torus.rotation.y += 0.005;
   torus.rotation.z += 0.0025;
 
+  cube.rotation.x += 0.01;
+  cube.rotation.y += 0.01;
+}
+
+
+window.addEventListener('resize', onWindowResize);
+
+function animate() {
+  requestAnimationFrame(animate);
+
+  rotations()
+
+  const time = new Date().getTime()
+  secondaryDirectionalLight.position.x = Math.cos(time * 0.002) * 10;
+  secondaryDirectionalLight.position.z = Math.sin(time * 0.002) * 10;
+
+  cameraProject();
+
   controls.update();
+
+  renderer.setRenderTarget(renderTarget);
+  renderer.render(secondaryScene, secondaryCamera);
+  renderer.setRenderTarget(null);
 
   renderer.render(scene, camera);
 }
