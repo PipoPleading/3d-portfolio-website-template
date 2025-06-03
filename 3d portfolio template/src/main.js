@@ -4,6 +4,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import getLayer from "./getLayer.js"
 import { OBJLoader } from 'three/examples/jsm/Addons.js';
 import { GLTFLoader } from 'three/examples/jsm/Addons.js';
+import { PI } from 'three/tsl';
 
 const scene = new THREE.Scene();
 scene.fog = new THREE.Fog(16711845, 0, 1000)
@@ -22,16 +23,15 @@ camera.position.setZ(30);
 
 renderer.render(scene, camera);
 
-const pointLight = new THREE.PointLight(0xffffff)
+const pointLight = new THREE.PointLight(11494500)
 pointLight.intensity = 15
 
-const ambientLight = new THREE.AmbientLight(0xffffff)
+const ambientLight = new THREE.AmbientLight(11494500)
 scene.add(pointLight, ambientLight)
 
 const lightHelper = new THREE.PointLightHelper(pointLight)
-const gridHelper = new THREE.GridHelper(200, 50);
-scene.add(gridHelper, lightHelper)
-
+// const gridHelper = new THREE.GridHelper(200, 50);
+scene.add(lightHelper)
 const sound = new THREE.Audio( listener);
 
 const audioLoader = new THREE.AudioLoader();
@@ -116,7 +116,6 @@ scene.add(movieCubeScreen);
 
 const targetMat = new THREE.MeshPhongMaterial({
   map: renderTarget.texture
-  // working, pog
 });
 const targetPlane = new THREE.Mesh(new THREE.PlaneGeometry(
   targetPlaneSize.width,
@@ -125,10 +124,13 @@ targetPlane.rotation.y = 45
 targetPlane.position.set(-15, 7.5, -12)
 
 scene.add(targetPlane);
-
+//tvs
 const gltfLoader = new GLTFLoader();
+const tv1_rotation = Math.PI; // rotations are in fucking radians broooooooooooo aaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
 gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+
+  gltfScene.scene.rotation.set(0, tv1_rotation  , 0);
   scene.add(gltfScene.scene);
 })
 const loader = new OBJLoader();
@@ -136,10 +138,9 @@ loader.load("crt_shell.obj", function (object) {
   object.traverse((mesh) => {
     mesh.material = movieMaterial;
   });
+  object.rotation.set(0, tv1_rotation, 0);
   scene.add(object);
 });
-
-
 
 function cameraProject(){
   secondaryCamera.rotation.x = camera.rotation.x
@@ -158,16 +159,6 @@ function addStar() {
 }
 
 Array(250).fill().forEach(addStar)
-
-// const gradientBackground = getLayer({
-//   hue: 0.97,
-//   numSprites: 24,
-//   opacity: 0.2,
-//   radius: 12,
-//   size: 24,
-//   y: 1
-// });
-// scene.add(gradientBackground);
 
 window.addEventListener('resize', onWindowResize);
 
