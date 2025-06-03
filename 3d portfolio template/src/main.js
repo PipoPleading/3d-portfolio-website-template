@@ -79,7 +79,6 @@ secondaryCamera.position.set(
   targetPlanePosition.x,
   targetPlanePosition.y + 4,
   targetPlanePosition.z)
-// secondaryCamera.rotation.y = 45
 secondaryCamera.lookAt(new THREE.Vector3(0, 5, -10));
 
 const secondaryScene = new THREE.Scene();
@@ -160,14 +159,10 @@ function addStar() {
 
 Array(250).fill().forEach(addStar)
 
-window.addEventListener('resize', onWindowResize);
+// window.addEventListener('resize', onWindowResize);
 
 function animate() {
   requestAnimationFrame(animate);
-
-  const time = new Date().getTime()
-  secondaryDirectionalLight.position.x = Math.cos(time * 0.002) * 10;
-  secondaryDirectionalLight.position.z = Math.sin(time * 0.002) * 10;
 
   cameraProject();
 
