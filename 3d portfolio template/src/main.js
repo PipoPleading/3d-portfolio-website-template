@@ -1,10 +1,27 @@
 import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+// import javascriptLogo from './javascript.svg'
+// import viteLogo from '/vite.svg'
+// import { setupCounter } from './counter.js'
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { ThreeMFLoader } from 'three/examples/jsm/Addons.js';
+// import { ThreeMFLoader } from 'three/examples/jsm/Addons.js';
+import getLayer from "./getLayer.js"
+import getStarfield from "./getStarfield.js"
+import { GLTFLoader } from 'three/examples/jsm/Addons.js';
+
+// const gltfLoader = new GLTFLoader();
+// const crtGlb = await gltfLoader.loadAsync('./assets/bullshithere.glb')
+// const crt = crtGlb.scene;
+// crt.traverse((child) => {
+//   if (child.isMesh) {
+//     child.geometry.center();
+//   }
+// });
+// scene.add(crt);
+
+
+
+
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -20,11 +37,11 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.setZ(30);
 
 renderer.render(scene, camera);
-const geometry = new THREE.TorusGeometry(10, 3, 16, 60);
-const material = new THREE.MeshStandardMaterial({color: 0xFF6347});
-const torus = new THREE.Mesh(geometry, material);
+// const geometry = new THREE.TorusGeometry(10, 3, 16, 60);
+// const material = new THREE.MeshStandardMaterial({color: 0xFF6347});
+// const torus = new THREE.Mesh(geometry, material);
 
-scene.add(torus);
+// scene.add(torus);
 
 const pointLight = new THREE.PointLight(0xffffff)
 //pointLight.position.set(5,5,5)
@@ -62,19 +79,18 @@ function onDocumentKeyDown(event) {
 const controls = new OrbitControls(camera, renderer.domElement);
 
 
+// const testTexture = new THREE.TextureLoader().load('clione.gif');
 
-const testTexture = new THREE.TextureLoader().load('clione.gif');
-
-const clione = new THREE.Mesh(
-  new THREE.BoxGeometry(3,3,3),
-  new THREE.MeshStandardMaterial( {map: testTexture })
-)
+// const clione = new THREE.Mesh(
+//   new THREE.BoxGeometry(3,3,3),
+//   new THREE.MeshStandardMaterial( {map: testTexture })
+// )
 
 
 // scene.add(clione)
 
-const texture = new THREE.TextureLoader().load('background.jpg');
-scene.background = texture;
+// const texture = new THREE.TextureLoader().load('background.jpg');
+// scene.background = texture;
 
 // Resize handler
 function onWindowResize() {
@@ -111,12 +127,12 @@ secondaryScene.add(secondaryCamera, secondaryDirectionalLight)
 // secondaryScene.add(torus);
 const cube = new THREE.Mesh(new THREE.BoxGeometry(15,15,15), new THREE.MeshStandardMaterial)
 cube.castShadow = true
-clione.castShadow = true
+// clione.castShadow = true
 
 cube.position.set(-50, 0,-50)
-clione.position.set(-25,3,-25)
+// clione.position.set(-25,3,-25)
 
-secondaryScene.add(cube, clione)
+secondaryScene.add(cube)
 
 
 const targetMat = new THREE.MeshPhongMaterial({
@@ -137,28 +153,41 @@ function cameraProject(){
   secondaryCamera.rotation.z = camera.rotation.z
 }
 
-function addStar() {
-  const geometry = new THREE.SphereGeometry(0.35)
-  const material = new THREE.MeshStandardMaterial( {color: 0xffffff})
-  const star = new THREE.Mesh(geometry, material);
+// function addStar() {
+//   const geometry = new THREE.SphereGeometry(0.35)
+//   const material = new THREE.MeshStandardMaterial( {color: 0xffffff})
+//   const star = new THREE.Mesh(geometry, material);
 
-  const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread( 100) );
-  star.position.set(x,y,z)
-  scene.add(star)
-  secondaryScene.add(star)
-}
+//   const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread( 100) );
+//   star.position.set(x,y,z)
+//   scene.add(star)
+//   secondaryScene.add(star)
+// }
 
-Array(200).fill().forEach(addStar)
+// Array(200).fill().forEach(addStar)
 
 function rotations(){
-  torus.rotation.x += 0.01;
-  torus.rotation.y += 0.005;
-  torus.rotation.z += 0.0025;
+  // torus.rotation.x += 0.01;
+  // torus.rotation.y += 0.005;
+  // torus.rotation.z += 0.0025;
 
   cube.rotation.x += 0.01;
   cube.rotation.y += 0.01;
 }
 
+
+
+const gradientBackground = getLayer({
+  hue: 0.97,
+  numSprites: 24,
+  opacity: 0.2,
+  radius: 12,
+  size: 24,
+  y: 1
+});
+scene.add(gradientBackground);
+// const stars = getStarfield({ numStars: 50});
+// scene.add(stars);
 
 window.addEventListener('resize', onWindowResize);
 
