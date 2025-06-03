@@ -127,7 +127,10 @@ targetPlane.position.set(-15, 7.5, -12)
 scene.add(targetPlane);
 
 const gltfLoader = new GLTFLoader();
-const crt_hollow_glb = await gltfLoader.loadAsync('crt_hollow.glb')
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  scene.add(gltfScene.scene);
+})
+// const crt_hollow_glb = await gltfLoader.loadAsync('crt_hollow.glb')
 // const crt_screen_glb = await gltfLoader.loadAsync('crt_screen.glb')
 // const crtsh = crt_shell_glb.scene;
 // const crtsc = crt_screen_glb.scene;
