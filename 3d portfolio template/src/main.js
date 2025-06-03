@@ -2,7 +2,7 @@ import './style.css'
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import getLayer from "./getLayer.js"
-
+import { OBJLoader } from 'three/examples/jsm/Addons.js';
 import { GLTFLoader } from 'three/examples/jsm/Addons.js';
 
 const scene = new THREE.Scene();
@@ -127,29 +127,19 @@ targetPlane.position.set(-15, 7.5, -12)
 scene.add(targetPlane);
 
 const gltfLoader = new GLTFLoader();
+
 gltfLoader.load("crt_hollow.glb", (gltfScene) => {
   scene.add(gltfScene.scene);
 })
-// const crt_hollow_glb = await gltfLoader.loadAsync('crt_hollow.glb')
-// const crt_screen_glb = await gltfLoader.loadAsync('crt_screen.glb')
-// const crtsh = crt_shell_glb.scene;
-// const crtsc = crt_screen_glb.scene;
+const loader = new OBJLoader();
+loader.load("crt_shell.obj", function (object) {
+  object.traverse((mesh) => {
+    mesh.material = movieMaterial;
+  });
+  scene.add(object);
+});
 
-// crtsc.traverse((child) => {
-//   if (child.isMesh) {
-//     child.geometry.center();
-//   }
-// });
-// scene.add(crtsc);
 
-// crtsh.traverse((child) => {
-//   if (child.isMesh) {
-//     child.geometry.center();
-//   }
-// });
-
-// crtsh.position.set(0, 0, 50)
-// scene.add(crtsh);
 
 function cameraProject(){
   secondaryCamera.rotation.x = camera.rotation.x
@@ -160,11 +150,6 @@ function cameraProject(){
 function addStar() {
   const map = new THREE.TextureLoader().load('circle.png');
   const material = new THREE.SpriteMaterial( {map:map, color: 16711709});
-
-
-  // const geometry = new THREE.MeshBasicMaterial(0.35)
-  // const material = new THREE.MeshStandardMaterial( {color: 16711709})
-  // const star = new THREE.Mesh(geometry, material);
   const star = new THREE.Sprite(material);
 
   const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(1000) );
@@ -172,17 +157,17 @@ function addStar() {
   scene.add(star)
 }
 
-Array(2500).fill().forEach(addStar)
+Array(250).fill().forEach(addStar)
 
-const gradientBackground = getLayer({
-  hue: 0.97,
-  numSprites: 24,
-  opacity: 0.2,
-  radius: 12,
-  size: 24,
-  y: 1
-});
-scene.add(gradientBackground);
+// const gradientBackground = getLayer({
+//   hue: 0.97,
+//   numSprites: 24,
+//   opacity: 0.2,
+//   radius: 12,
+//   size: 24,
+//   y: 1
+// });
+// scene.add(gradientBackground);
 
 window.addEventListener('resize', onWindowResize);
 
