@@ -13,6 +13,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  margin: 0;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -40,6 +44,16 @@ h1 {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+}
+
+#bg {
+  margin-top: 100px;
+}
+
+#nav {
+  position: fixed;
+  top: 0;
+  z-index: 999;
 }
 
 .logo {
