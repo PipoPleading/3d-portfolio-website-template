@@ -20,9 +20,6 @@ import { GLTFLoader } from 'three/examples/jsm/Addons.js';
 // scene.add(crt);
 
 
-
-
-
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const listener = new THREE.AudioListener();
@@ -77,7 +74,7 @@ function onDocumentKeyDown(event) {
 }
 
 const controls = new OrbitControls(camera, renderer.domElement);
-
+controls.enablePan = false;
 
 // const testTexture = new THREE.TextureLoader().load('clione.gif');
 
@@ -131,8 +128,31 @@ cube.castShadow = true
 
 cube.position.set(-50, 0,-50)
 // clione.position.set(-25,3,-25)
+// secondaryScene.add(movieCubeScreen);
 
 secondaryScene.add(cube)
+
+let video = document.getElementById("pichu");
+let videoTexture = new THREE.VideoTexture(video);
+
+// filtering to reduce noise
+videoTexture.minFilter = THREE.LinearFilter;
+videoTexture.magFilter = THREE.LinearFilter;
+
+//making an actual texture of the given video
+var movieMaterial = new THREE.MeshBasicMaterial({
+  map: videoTexture,
+  side: THREE.FrontSide,
+  toneMapped:false
+})
+
+// test object to show movie material
+let movieGeometry = new THREE.BoxGeometry(100, 100, 100, 100);
+let movieCubeScreen = new THREE.Mesh(movieGeometry, movieMaterial);
+
+movieCubeScreen.position.set(0, 50, 0);
+scene.add(movieCubeScreen);
+
 
 
 const targetMat = new THREE.MeshPhongMaterial({
@@ -186,14 +206,15 @@ const gradientBackground = getLayer({
   y: 1
 });
 scene.add(gradientBackground);
+
 // const stars = getStarfield({ numStars: 50});
 // scene.add(stars);
 
 window.addEventListener('resize', onWindowResize);
 
+
 function animate() {
   requestAnimationFrame(animate);
-
   rotations()
 
   const time = new Date().getTime()
@@ -204,14 +225,17 @@ function animate() {
 
   controls.update();
 
+  videoTexture.needsUpdate = true;
+
   renderer.setRenderTarget(renderTarget);
   renderer.render(secondaryScene, secondaryCamera);
   renderer.setRenderTarget(null);
 
   renderer.render(scene, camera);
+  video.play()
+
 }
 
 animate();
-
 
 
