@@ -1,26 +1,13 @@
 import './style.css'
-// import javascriptLogo from './javascript.svg'
-// import viteLogo from '/vite.svg'
-// import { setupCounter } from './counter.js'
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-// import { ThreeMFLoader } from 'three/examples/jsm/Addons.js';
 import getLayer from "./getLayer.js"
-import getStarfield from "./getStarfield.js"
+
 import { GLTFLoader } from 'three/examples/jsm/Addons.js';
 
-// const gltfLoader = new GLTFLoader();
-// const crtGlb = await gltfLoader.loadAsync('./assets/bullshithere.glb')
-// const crt = crtGlb.scene;
-// crt.traverse((child) => {
-//   if (child.isMesh) {
-//     child.geometry.center();
-//   }
-// });
-// scene.add(crt);
-
-
 const scene = new THREE.Scene();
+scene.fog = new THREE.Fog(16711845, 0, 1000)
+
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const listener = new THREE.AudioListener();
 camera.add(listener);
@@ -34,14 +21,8 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.setZ(30);
 
 renderer.render(scene, camera);
-// const geometry = new THREE.TorusGeometry(10, 3, 16, 60);
-// const material = new THREE.MeshStandardMaterial({color: 0xFF6347});
-// const torus = new THREE.Mesh(geometry, material);
-
-// scene.add(torus);
 
 const pointLight = new THREE.PointLight(0xffffff)
-//pointLight.position.set(5,5,5)
 pointLight.intensity = 15
 
 const ambientLight = new THREE.AmbientLight(0xffffff)
@@ -76,19 +57,6 @@ function onDocumentKeyDown(event) {
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enablePan = false;
 
-// const testTexture = new THREE.TextureLoader().load('clione.gif');
-
-// const clione = new THREE.Mesh(
-//   new THREE.BoxGeometry(3,3,3),
-//   new THREE.MeshStandardMaterial( {map: testTexture })
-// )
-
-
-// scene.add(clione)
-
-// const texture = new THREE.TextureLoader().load('background.jpg');
-// scene.background = texture;
-
 // Resize handler
 function onWindowResize() {
   // need to adjust to stay centered, and maintain ideal ratio of 16:9
@@ -119,17 +87,10 @@ secondaryScene.background = new THREE.Color(0xD61C4E);
 const secondaryDirectionalLight = new THREE.DirectionalLight(0xFFFFFF, 1);
 secondaryScene.add(secondaryCamera, secondaryDirectionalLight)
 
-// torus.position.set(targetPlanePosition)
-
-// secondaryScene.add(torus);
 const cube = new THREE.Mesh(new THREE.BoxGeometry(15,15,15), new THREE.MeshStandardMaterial)
 cube.castShadow = true
-// clione.castShadow = true
 
 cube.position.set(-50, 0,-50)
-// clione.position.set(-25,3,-25)
-// secondaryScene.add(movieCubeScreen);
-
 secondaryScene.add(cube)
 
 let video = document.getElementById("pichu");
@@ -147,13 +108,11 @@ var movieMaterial = new THREE.MeshBasicMaterial({
 })
 
 // test object to show movie material
-let movieGeometry = new THREE.BoxGeometry(100, 100, 100, 100);
+let movieGeometry = new THREE.PlaneGeometry(25, 25, 25, 25);
 let movieCubeScreen = new THREE.Mesh(movieGeometry, movieMaterial);
 
-movieCubeScreen.position.set(0, 50, 0);
+movieCubeScreen.position.set(-50, 0, -50);
 scene.add(movieCubeScreen);
-
-
 
 const targetMat = new THREE.MeshPhongMaterial({
   map: renderTarget.texture
@@ -167,35 +126,50 @@ targetPlane.position.set(-15, 7.5, -12)
 
 scene.add(targetPlane);
 
+const gltfLoader = new GLTFLoader();
+const crt_shell_glb = await gltfLoader.loadAsync('crt_shell.glb')
+const crt_screen_glb = await gltfLoader.loadAsync('crt_screen.glb')
+const crtsh = crt_shell_glb.scene;
+const crtsc = crt_screen_glb.scene;
+
+crtsc.traverse((child) => {
+  if (child.isMesh) {
+    child.geometry.center();
+  }
+});
+scene.add(crtsc);
+
+crtsh.traverse((child) => {
+  if (child.isMesh) {
+    child.geometry.center();
+  }
+});
+
+crtsh.position.set(0, 0, 50)
+scene.add(crtsh);
+
 function cameraProject(){
   secondaryCamera.rotation.x = camera.rotation.x
   secondaryCamera.rotation.y = camera.rotation.y
   secondaryCamera.rotation.z = camera.rotation.z
 }
 
-// function addStar() {
-//   const geometry = new THREE.SphereGeometry(0.35)
-//   const material = new THREE.MeshStandardMaterial( {color: 0xffffff})
-//   const star = new THREE.Mesh(geometry, material);
+function addStar() {
+  const map = new THREE.TextureLoader().load('circle.png');
+  const material = new THREE.SpriteMaterial( {map:map, color: 16711709});
 
-//   const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread( 100) );
-//   star.position.set(x,y,z)
-//   scene.add(star)
-//   secondaryScene.add(star)
-// }
 
-// Array(200).fill().forEach(addStar)
+  // const geometry = new THREE.MeshBasicMaterial(0.35)
+  // const material = new THREE.MeshStandardMaterial( {color: 16711709})
+  // const star = new THREE.Mesh(geometry, material);
+  const star = new THREE.Sprite(material);
 
-function rotations(){
-  // torus.rotation.x += 0.01;
-  // torus.rotation.y += 0.005;
-  // torus.rotation.z += 0.0025;
-
-  cube.rotation.x += 0.01;
-  cube.rotation.y += 0.01;
+  const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(1000) );
+  star.position.set(x,y,z)
+  scene.add(star)
 }
 
-
+Array(2500).fill().forEach(addStar)
 
 const gradientBackground = getLayer({
   hue: 0.97,
@@ -207,15 +181,10 @@ const gradientBackground = getLayer({
 });
 scene.add(gradientBackground);
 
-// const stars = getStarfield({ numStars: 50});
-// scene.add(stars);
-
 window.addEventListener('resize', onWindowResize);
-
 
 function animate() {
   requestAnimationFrame(animate);
-  rotations()
 
   const time = new Date().getTime()
   secondaryDirectionalLight.position.x = Math.cos(time * 0.002) * 10;
@@ -232,7 +201,6 @@ function animate() {
   renderer.setRenderTarget(null);
 
   renderer.render(scene, camera);
-  video.play()
 
 }
 
