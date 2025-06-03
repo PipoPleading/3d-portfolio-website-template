@@ -127,7 +127,7 @@ targetPlane.position.set(-15, 7.5, -12)
 scene.add(targetPlane);
 
 const gltfLoader = new GLTFLoader();
-// const crt_shell_glb = await gltfLoader.loadAsync('crt_shell.glb')
+const crt_shell_glb = await gltfLoader.loadAsync('crt_shell.glb')
 // const crt_screen_glb = await gltfLoader.loadAsync('crt_screen.glb')
 // const crtsh = crt_shell_glb.scene;
 // const crtsc = crt_screen_glb.scene;
