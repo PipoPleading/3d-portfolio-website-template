@@ -1,14 +1,11 @@
 import './style.css'
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { OBJLoader, TextGeometry } from 'three/examples/jsm/Addons.js';
+import { OBJLoader } from 'three/examples/jsm/Addons.js';
 import { GLTFLoader } from 'three/examples/jsm/Addons.js';
-// import { TTFLoader } from 'three/examples/jsm/Addons.js';
 import { FontLoader } from 'three/examples/jsm/Addons.js';
-import { PI } from 'three/tsl';
-// import { TextGeometry } from 'three/examples/jsm/Addons.js';
-// import { getFirstObjectWithName } from './RayCastHelper.js'	
-// import {  getFirstCameraInScene, updateCameraAspect  } from './CameraHelper.js'	
+import { TextGeometry } from 'three/examples/jsm/Addons.js';
+
 const scene = new THREE.Scene();
 scene.fog = new THREE.Fog(1443592, 0, 2500) //16711845
 
