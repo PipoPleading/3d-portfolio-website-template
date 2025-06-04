@@ -95,19 +95,45 @@ function onWindowResize() {
 // cube.position.set(-50, 0,-50)
 // secondaryScene.add(cube)
 
-let video = document.getElementById("pichu");
-let videoTexture = new THREE.VideoTexture(video);
+let video1 = document.getElementById("lnc");
+let videoTexture1 = new THREE.VideoTexture(video1);
 
-// filtering to reduce noise
-videoTexture.minFilter = THREE.LinearFilter;
-videoTexture.magFilter = THREE.LinearFilter;
+videoTexture1.minFilter = THREE.LinearFilter;
+videoTexture1.magFilter = THREE.LinearFilter;
 
 //making an actual texture of the given video
-var movieMaterial = new THREE.MeshBasicMaterial({
-  map: videoTexture,
+var movieMaterial1 = new THREE.MeshBasicMaterial({
+  map: videoTexture1,
   side: THREE.FrontSide,
   toneMapped:false
 })
+
+// let video2 = document.getElementById("18st");
+// let videoTexture2 = new THREE.VideoTexture(video2);
+
+// videoTexture2.minFilter = THREE.LinearFilter;
+// videoTexture2.magFilter = THREE.LinearFilter;
+
+// //making an actual texture of the given video
+// var movieMaterial2 = new THREE.MeshBasicMaterial({
+//   map: videoTexture2,
+//   side: THREE.FrontSide,
+//   toneMapped:false
+// })
+
+// let video3 = document.getElementById("lnc");
+// let videoTexture3 = new THREE.VideoTexture(video3);
+
+// videoTexture3.minFilter = THREE.LinearFilter;
+// videoTexture3.magFilter = THREE.LinearFilter;
+
+// //making an actual texture of the given video
+// var movieMaterial3 = new THREE.MeshBasicMaterial({
+//   map: videoTexture3,
+//   side: THREE.FrontSide,
+//   toneMapped:false
+// })
+
 
 // test object to show movie material
 // let movieGeometry = new THREE.PlaneGeometry(25, 25, 25, 25);
@@ -145,7 +171,18 @@ var movieMaterial = new THREE.MeshBasicMaterial({
 
 //tvs
 const gltfLoader = new GLTFLoader();
-const tv1_rotation = Math.PI; // rotations are in fucking radians broooooooooooo aaaaaaaaaaaaaaaaaaaaaaaaaaaa
+const tv1_rotation = Math.PI; 
+const tv2_rotation = Math.PI * 0.3; 
+const tv3_rotation = Math.PI * 1.3; 
+
+const tv2_offsetx = -9
+const tv2_offsetz = -9
+const tv3_offsetx = -9
+const tv3_offsetz = -9
+
+// front
+
+const objLoader = new OBJLoader();
 
 gltfLoader.load("crt_hollow.glb", (gltfScene) => {
   gltfScene.scene.rotation.set(0, tv1_rotation  , 0);
@@ -193,12 +230,107 @@ gltfLoader.load("crt_hollow.glb", (gltfScene) => {
   scene.add(gltfScene.scene);
 })
 
+// side L
 
-const objLoader = new OBJLoader();
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv2_rotation  , 0);
+  gltfScene.scene.position.set(-9, 0, -10);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv2_rotation  , 0);
+  gltfScene.scene.position.set(5 + tv2_offsetx, 0, 0 + tv2_offsetz);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv2_rotation  , 0);
+  gltfScene.scene.position.set(-5 + tv2_offsetx, 0, 0 + tv2_offsetz);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv2_rotation  , 0);
+  gltfScene.scene.position.set(0 + tv2_offsetx, 5, 0 + tv2_offsetz);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv2_rotation  , 0);
+  gltfScene.scene.position.set(5 + tv2_offsetx, 5, 0 + tv2_offsetz);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv2_rotation  , 0);
+  gltfScene.scene.position.set(-5 + tv2_offsetx, 5, 0 + tv2_offsetz);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv2_rotation  , 0);
+  gltfScene.scene.position.set(0 + tv2_offsetx, -5, 0 + tv2_offsetz);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv2_rotation  , 0);
+  gltfScene.scene.position.set(5 + tv2_offsetx, -5, 0 + tv2_offsetz);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv2_rotation  , 0);
+  gltfScene.scene.position.set(-5 + tv2_offsetx, -5, 0 + tv2_offsetz);
+  scene.add(gltfScene.scene);
+})
+
+// side R
+
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv3_rotation  , 0);
+  gltfScene.scene.position.set(0 + tv3_offset, 0, 0 + tv3_offset);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv3_rotation  , 0);
+  gltfScene.scene.position.set(5 + tv3_offset, 0, 0 + tv3_offset);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv3_rotation  , 0);
+  gltfScene.scene.position.set(-5 + tv3_offset, 0, 0 + tv3_offset);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv3_rotation  , 0);
+  gltfScene.scene.position.set(0 + tv3_offset, 5, 0 + tv3_offset);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv3_rotation  , 0);
+  gltfScene.scene.position.set(5 + tv3_offset, 5, 0 + tv3_offset);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv3_rotation  , 0);
+  gltfScene.scene.position.set(-5 + tv3_offset, 5, 0 + tv3_offset);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv3_rotation  , 0);
+  gltfScene.scene.position.set(0 + tv3_offset, -5, 0 + tv3_offset);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv3_rotation  , 0);
+  gltfScene.scene.position.set(5 + tv3_offset, -5, 0 + tv3_offset);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv3_rotation  , 0);
+  gltfScene.scene.position.set(-5 + tv3_offset, -5, 0 + tv3_offset);
+  scene.add(gltfScene.scene);
+})
+
+// screens
 
 objLoader.load("crt_shell1.obj", function (object) {
   object.traverse((mesh) => {
-    mesh.material = movieMaterial;
+    mesh.material = movieMaterial1;
   });
   object.rotation.set(0, tv1_rotation, 0);  
   object.position.set(-5, 5, 0);
@@ -207,7 +339,7 @@ objLoader.load("crt_shell1.obj", function (object) {
 
 objLoader.load("crt_shell2.obj", function (object) {
   object.traverse((mesh) => {
-    mesh.material = movieMaterial;
+    mesh.material = movieMaterial1;
   });
   object.rotation.set(0, tv1_rotation, 0);
   object.position.set(0, 5, 0);
@@ -216,7 +348,7 @@ objLoader.load("crt_shell2.obj", function (object) {
 
 objLoader.load("crt_shell3.obj", function (object) {
   object.traverse((mesh) => {
-    mesh.material = movieMaterial;
+    mesh.material = movieMaterial1;
   });
   object.rotation.set(0, tv1_rotation, 0);
   object.position.set(5, 5, 0);
@@ -225,7 +357,7 @@ objLoader.load("crt_shell3.obj", function (object) {
 
 objLoader.load("crt_shell4.obj", function (object) {
   object.traverse((mesh) => {
-    mesh.material = movieMaterial;
+    mesh.material = movieMaterial1;
   });
   object.rotation.set(0, tv1_rotation, 0);
   object.position.set(-5, 0, 0);
@@ -234,7 +366,7 @@ objLoader.load("crt_shell4.obj", function (object) {
 
 objLoader.load("crt_shell5.obj", function (object) {
   object.traverse((mesh) => {
-    mesh.material = movieMaterial;
+    mesh.material = movieMaterial1;
   });
   object.rotation.set(0, tv1_rotation, 0);
   object.position.set(0, 0, 0);
@@ -243,7 +375,7 @@ objLoader.load("crt_shell5.obj", function (object) {
 
 objLoader.load("crt_shell6.obj", function (object) {
   object.traverse((mesh) => {
-    mesh.material = movieMaterial;
+    mesh.material = movieMaterial1;
   });
   object.rotation.set(0, tv1_rotation, 0);
   object.position.set(5, 0, 0);
@@ -252,7 +384,7 @@ objLoader.load("crt_shell6.obj", function (object) {
 
 objLoader.load("crt_shell7.obj", function (object) {
   object.traverse((mesh) => {
-    mesh.material = movieMaterial;
+    mesh.material = movieMaterial1;
   });
   object.rotation.set(0, tv1_rotation, 0);
   object.position.set(-5, -5, 0);
@@ -261,7 +393,7 @@ objLoader.load("crt_shell7.obj", function (object) {
 
 objLoader.load("crt_shell8.obj", function (object) {
   object.traverse((mesh) => {
-    mesh.material = movieMaterial;
+    mesh.material = movieMaterial1;
   });
   object.rotation.set(0, tv1_rotation, 0);
   object.position.set(0, -5, 0);
@@ -270,7 +402,7 @@ objLoader.load("crt_shell8.obj", function (object) {
 
 objLoader.load("crt_shell9.obj", function (object) {
   object.traverse((mesh) => {
-    mesh.material = movieMaterial;
+    mesh.material = movieMaterial1;
   });
   object.rotation.set(0, tv1_rotation, 0);
   object.position.set(5, -5, 0);
@@ -346,7 +478,7 @@ function animate() {
 
   controls.update();
 
-  videoTexture.needsUpdate = true;
+  videoTexture1.needsUpdate = true;
 
   // renderer.setRenderTarget(renderTarget);
   // renderer.setRenderTarget(null);
