@@ -172,15 +172,15 @@ var movieMaterial1 = new THREE.MeshBasicMaterial({
 //tvs
 const gltfLoader = new GLTFLoader();
 const tv1_rotation = Math.PI; 
-const tv2_rotation = Math.PI * 0.3; 
-const tv3_rotation = Math.PI * 1.3; 
+const tv2_rotation = Math.PI * 0.33333; 
+const tv3_rotation = Math.PI * 1.666666; 
 
 const tv2_offsetx = -9
 const tv2_offsetz = -9
 const tv3_offsetx = -9
 const tv3_offsetz = -9
 
-// front
+//#region front
 
 const objLoader = new OBJLoader();
 
@@ -229,105 +229,104 @@ gltfLoader.load("crt_hollow.glb", (gltfScene) => {
   gltfScene.scene.position.set(-5, -5, 0);
   scene.add(gltfScene.scene);
 })
-
-// side L
-
-gltfLoader.load("crt_hollow.glb", (gltfScene) => {
-  gltfScene.scene.rotation.set(0, tv2_rotation  , 0);
-  gltfScene.scene.position.set(-9, 0, -10);
-  scene.add(gltfScene.scene);
-})
-gltfLoader.load("crt_hollow.glb", (gltfScene) => {
-  gltfScene.scene.rotation.set(0, tv2_rotation  , 0);
-  gltfScene.scene.position.set(5 + tv2_offsetx, 0, 0 + tv2_offsetz);
-  scene.add(gltfScene.scene);
-})
-gltfLoader.load("crt_hollow.glb", (gltfScene) => {
-  gltfScene.scene.rotation.set(0, tv2_rotation  , 0);
-  gltfScene.scene.position.set(-5 + tv2_offsetx, 0, 0 + tv2_offsetz);
-  scene.add(gltfScene.scene);
-})
-gltfLoader.load("crt_hollow.glb", (gltfScene) => {
-  gltfScene.scene.rotation.set(0, tv2_rotation  , 0);
-  gltfScene.scene.position.set(0 + tv2_offsetx, 5, 0 + tv2_offsetz);
-  scene.add(gltfScene.scene);
-})
-gltfLoader.load("crt_hollow.glb", (gltfScene) => {
-  gltfScene.scene.rotation.set(0, tv2_rotation  , 0);
-  gltfScene.scene.position.set(5 + tv2_offsetx, 5, 0 + tv2_offsetz);
-  scene.add(gltfScene.scene);
-})
-gltfLoader.load("crt_hollow.glb", (gltfScene) => {
-  gltfScene.scene.rotation.set(0, tv2_rotation  , 0);
-  gltfScene.scene.position.set(-5 + tv2_offsetx, 5, 0 + tv2_offsetz);
-  scene.add(gltfScene.scene);
-})
-gltfLoader.load("crt_hollow.glb", (gltfScene) => {
-  gltfScene.scene.rotation.set(0, tv2_rotation  , 0);
-  gltfScene.scene.position.set(0 + tv2_offsetx, -5, 0 + tv2_offsetz);
-  scene.add(gltfScene.scene);
-})
-gltfLoader.load("crt_hollow.glb", (gltfScene) => {
-  gltfScene.scene.rotation.set(0, tv2_rotation  , 0);
-  gltfScene.scene.position.set(5 + tv2_offsetx, -5, 0 + tv2_offsetz);
-  scene.add(gltfScene.scene);
-})
-gltfLoader.load("crt_hollow.glb", (gltfScene) => {
-  gltfScene.scene.rotation.set(0, tv2_rotation  , 0);
-  gltfScene.scene.position.set(-5 + tv2_offsetx, -5, 0 + tv2_offsetz);
-  scene.add(gltfScene.scene);
-})
-
-// side R
+//#endregion
+//#region side L
 
 gltfLoader.load("crt_hollow.glb", (gltfScene) => {
-  gltfScene.scene.rotation.set(0, tv3_rotation  , 0);
-  gltfScene.scene.position.set(0 + tv3_offset, 0, 0 + tv3_offset);
+  gltfScene.scene.rotation.set(0, tv2_rotation  , 0);
+  gltfScene.scene.position.set(-8.7522, 0, -5.7237);
   scene.add(gltfScene.scene);
 })
 gltfLoader.load("crt_hollow.glb", (gltfScene) => {
-  gltfScene.scene.rotation.set(0, tv3_rotation  , 0);
-  gltfScene.scene.position.set(5 + tv3_offset, 0, 0 + tv3_offset);
+  gltfScene.scene.rotation.set(0, tv2_rotation  , 0);
+  gltfScene.scene.position.set(-6.2522, 0, -10.0538);
   scene.add(gltfScene.scene);
 })
 gltfLoader.load("crt_hollow.glb", (gltfScene) => {
-  gltfScene.scene.rotation.set(0, tv3_rotation  , 0);
-  gltfScene.scene.position.set(-5 + tv3_offset, 0, 0 + tv3_offset);
+  gltfScene.scene.rotation.set(0, tv2_rotation  , 0);
+  gltfScene.scene.position.set(-3.7522, 0, -14.384);
   scene.add(gltfScene.scene);
 })
 gltfLoader.load("crt_hollow.glb", (gltfScene) => {
-  gltfScene.scene.rotation.set(0, tv3_rotation  , 0);
-  gltfScene.scene.position.set(0 + tv3_offset, 5, 0 + tv3_offset);
+  gltfScene.scene.rotation.set(0, tv2_rotation  , 0);
+  gltfScene.scene.position.set(-8.7522, 5, -5.7237);
   scene.add(gltfScene.scene);
 })
 gltfLoader.load("crt_hollow.glb", (gltfScene) => {
-  gltfScene.scene.rotation.set(0, tv3_rotation  , 0);
-  gltfScene.scene.position.set(5 + tv3_offset, 5, 0 + tv3_offset);
+  gltfScene.scene.rotation.set(0, tv2_rotation  , 0);
+  gltfScene.scene.position.set(-6.2522, 5, -10.0538);
   scene.add(gltfScene.scene);
 })
 gltfLoader.load("crt_hollow.glb", (gltfScene) => {
-  gltfScene.scene.rotation.set(0, tv3_rotation  , 0);
-  gltfScene.scene.position.set(-5 + tv3_offset, 5, 0 + tv3_offset);
+  gltfScene.scene.rotation.set(0, tv2_rotation  , 0);
+  gltfScene.scene.position.set(-3.7522, 5, -14.384);
   scene.add(gltfScene.scene);
 })
 gltfLoader.load("crt_hollow.glb", (gltfScene) => {
-  gltfScene.scene.rotation.set(0, tv3_rotation  , 0);
-  gltfScene.scene.position.set(0 + tv3_offset, -5, 0 + tv3_offset);
+  gltfScene.scene.rotation.set(0, tv2_rotation  , 0);
+  gltfScene.scene.position.set(-8.7522, -5, -5.7237);
   scene.add(gltfScene.scene);
 })
 gltfLoader.load("crt_hollow.glb", (gltfScene) => {
-  gltfScene.scene.rotation.set(0, tv3_rotation  , 0);
-  gltfScene.scene.position.set(5 + tv3_offset, -5, 0 + tv3_offset);
+  gltfScene.scene.rotation.set(0, tv2_rotation  , 0);
+  gltfScene.scene.position.set(-6.2522, -5, -10.0538);
   scene.add(gltfScene.scene);
 })
 gltfLoader.load("crt_hollow.glb", (gltfScene) => {
-  gltfScene.scene.rotation.set(0, tv3_rotation  , 0);
-  gltfScene.scene.position.set(-5 + tv3_offset, -5, 0 + tv3_offset);
+  gltfScene.scene.rotation.set(0, tv2_rotation  , 0);
+  gltfScene.scene.position.set(-3.7522, -5, -14.384);
   scene.add(gltfScene.scene);
 })
+//#endregion
+//#region side R
 
-// screens
-
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv3_rotation  , 0);
+  gltfScene.scene.position.set(8.7522, 0, -5.7237);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv3_rotation  , 0);
+  gltfScene.scene.position.set(6.2522, 0, -10.0538);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv3_rotation  , 0);
+  gltfScene.scene.position.set(3.7522, 0, -14.384);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv3_rotation  , 0);
+  gltfScene.scene.position.set(8.7522, 5, -5.7237);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv3_rotation  , 0);
+  gltfScene.scene.position.set(6.2522, 5, -10.0538);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv3_rotation  , 0);
+  gltfScene.scene.position.set(3.7522, 5, -14.384);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv3_rotation  , 0);
+  gltfScene.scene.position.set(8.7522, -5, -5.7237);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv3_rotation  , 0);
+  gltfScene.scene.position.set(6.2522, -5, -10.0538);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv3_rotation  , 0);
+  gltfScene.scene.position.set(3.7522, -5, -14.384);
+  scene.add(gltfScene.scene);
+})
+// #endregion
+// #region screens
 objLoader.load("crt_shell1.obj", function (object) {
   object.traverse((mesh) => {
     mesh.material = movieMaterial1;
@@ -408,6 +407,172 @@ objLoader.load("crt_shell9.obj", function (object) {
   object.position.set(5, -5, 0);
   scene.add(object);
 });
+
+//#endregion
+//#region L screens
+objLoader.load("crt_shell1.obj", function (object) {
+  object.traverse((mesh) => {
+    mesh.material = movieMaterial1;
+  });
+  object.rotation.set(0, tv2_rotation, 0);  
+  object.position.set(-3.7522, 5, -14.384);
+  scene.add(object);
+});
+
+objLoader.load("crt_shell2.obj", function (object) {
+  object.traverse((mesh) => {
+    mesh.material = movieMaterial1;
+  });
+  object.rotation.set(0, tv2_rotation, 0);
+  object.position.set(-6.2522, 5, -10.0538);
+  scene.add(object);
+});
+
+objLoader.load("crt_shell3.obj", function (object) {
+  object.traverse((mesh) => {
+    mesh.material = movieMaterial1;
+  });
+  object.rotation.set(0, tv2_rotation, 0);
+  object.position.set(-8.7522, 5, -5.7237);
+  scene.add(object);
+});
+
+objLoader.load("crt_shell4.obj", function (object) {
+  object.traverse((mesh) => {
+    mesh.material = movieMaterial1;
+  });
+  object.rotation.set(0, tv2_rotation, 0);
+  object.position.set(-3.7522, 0, -14.384);
+  scene.add(object);
+});
+
+objLoader.load("crt_shell5.obj", function (object) {
+  object.traverse((mesh) => {
+    mesh.material = movieMaterial1;
+  });
+  object.rotation.set(0, tv2_rotation, 0);
+  object.position.set(-6.2522, 0, -10.0538);
+  scene.add(object);
+});
+
+objLoader.load("crt_shell6.obj", function (object) {
+  object.traverse((mesh) => {
+    mesh.material = movieMaterial1;
+  });
+  object.rotation.set(0, tv2_rotation, 0);
+  object.position.set(-8.7522, 0, -5.7237);
+  scene.add(object);
+});
+
+objLoader.load("crt_shell7.obj", function (object) {
+  object.traverse((mesh) => {
+    mesh.material = movieMaterial1;
+  });
+  object.rotation.set(0, tv2_rotation, 0);
+  object.position.set(-3.7522, -5, -14.384);
+  scene.add(object);
+});
+
+objLoader.load("crt_shell8.obj", function (object) {
+  object.traverse((mesh) => {
+    mesh.material = movieMaterial1;
+  });
+  object.rotation.set(0, tv2_rotation, 0);
+  object.position.set(-6.2522, -5, -10.0538);
+  scene.add(object);
+});
+
+objLoader.load("crt_shell9.obj", function (object) {
+  object.traverse((mesh) => {
+    mesh.material = movieMaterial1;
+  });
+  object.rotation.set(0, tv2_rotation, 0);
+  object.position.set(-8.7522, -5, -5.7237);
+  scene.add(object);
+});
+//#endregion
+//#region R screens
+objLoader.load("crt_shell1.obj", function (object) {
+  object.traverse((mesh) => {
+    mesh.material = movieMaterial1;
+  });
+  object.rotation.set(0, tv3_rotation, 0);  
+  object.position.set(8.7522, 5, -5.7237);
+  scene.add(object);
+});
+
+objLoader.load("crt_shell2.obj", function (object) {
+  object.traverse((mesh) => {
+    mesh.material = movieMaterial1;
+  });
+  object.rotation.set(0, tv3_rotation, 0);
+  object.position.set(6.2522, 5, -10.0538);
+  scene.add(object);
+});
+
+objLoader.load("crt_shell3.obj", function (object) {
+  object.traverse((mesh) => {
+    mesh.material = movieMaterial1;
+  });
+  object.rotation.set(0, tv3_rotation, 0);
+  object.position.set(3.7522, 5, -14.384);
+  scene.add(object);
+});
+
+objLoader.load("crt_shell4.obj", function (object) {
+  object.traverse((mesh) => {
+    mesh.material = movieMaterial1;
+  });
+  object.rotation.set(0, tv3_rotation, 0);
+  object.position.set(8.7522, 0, -5.7237);
+  scene.add(object);
+});
+
+objLoader.load("crt_shell5.obj", function (object) {
+  object.traverse((mesh) => {
+    mesh.material = movieMaterial1;
+  });
+  object.rotation.set(0, tv3_rotation, 0);
+  object.position.set(6.2522, 0, -10.0538);
+  scene.add(object);
+});
+
+objLoader.load("crt_shell6.obj", function (object) {
+  object.traverse((mesh) => {
+    mesh.material = movieMaterial1;
+  });
+  object.rotation.set(0, tv3_rotation, 0);
+  object.position.set(3.7522, 0, -14.384);
+  scene.add(object);
+});
+
+objLoader.load("crt_shell7.obj", function (object) {
+  object.traverse((mesh) => {
+    mesh.material = movieMaterial1;
+  });
+  object.rotation.set(0, tv3_rotation, 0);
+  object.position.set(8.7522, -5, -5.7237);
+  scene.add(object);
+});
+
+objLoader.load("crt_shell8.obj", function (object) {
+  object.traverse((mesh) => {
+    mesh.material = movieMaterial1;
+  });
+  object.rotation.set(0, tv3_rotation, 0);
+  object.position.set(6.2522, -5, -10.0538);
+  scene.add(object);
+});
+
+objLoader.load("crt_shell9.obj", function (object) {
+  object.traverse((mesh) => {
+    mesh.material = movieMaterial1;
+  });
+  object.rotation.set(0, tv3_rotation, 0);
+  object.position.set(3.7522, -5, -14.384);
+  scene.add(object);
+});
+//#endregion
 
 function addStar() {
   const map = new THREE.TextureLoader().load('star.png');
