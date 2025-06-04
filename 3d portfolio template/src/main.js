@@ -159,7 +159,7 @@ function addStar() {
 
 Array(250).fill().forEach(addStar)
 
-// window.addEventListener('resize', onWindowResize);
+window.addEventListener('resize', onWindowResize);
 
 function animate() {
   requestAnimationFrame(animate);
