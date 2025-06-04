@@ -157,17 +157,91 @@ gltfLoader.load("crt_hollow.glb", (gltfScene) => {
   gltfScene.scene.position.set(5, 0, 0);
   scene.add(gltfScene.scene);
 })
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv1_rotation  , 0);
+  gltfScene.scene.position.set(-5, 0, 0);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv1_rotation  , 0);
+  gltfScene.scene.position.set(0, 5, 0);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv1_rotation  , 0);
+  gltfScene.scene.position.set(5, 5, 0);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv1_rotation  , 0);
+  gltfScene.scene.position.set(-5, 5, 0);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv1_rotation  , 0);
+  gltfScene.scene.position.set(0, -5, 0);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv1_rotation  , 0);
+  gltfScene.scene.position.set(5, -5, 0);
+  scene.add(gltfScene.scene);
+})
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv1_rotation  , 0);
+  gltfScene.scene.position.set(-5, -5, 0);
+  scene.add(gltfScene.scene);
+})
+
 
 const objLoader = new OBJLoader();
-objLoader.load("crt_shell.obj", function (object) {
+
+objLoader.load("crt_shell1.obj", function (object) {
+  object.traverse((mesh) => {
+    mesh.material = movieMaterial;
+  });
+  object.rotation.set(0, tv1_rotation, 0);  
+  object.position.set(-5, 5, 0);
+  scene.add(object);
+});
+
+objLoader.load("crt_shell2.obj", function (object) {
   object.traverse((mesh) => {
     mesh.material = movieMaterial;
   });
   object.rotation.set(0, tv1_rotation, 0);
+  object.position.set(0, 5, 0);
   scene.add(object);
 });
 
-objLoader.load("crt_shell.obj", function (object) {
+objLoader.load("crt_shell3.obj", function (object) {
+  object.traverse((mesh) => {
+    mesh.material = movieMaterial;
+  });
+  object.rotation.set(0, tv1_rotation, 0);
+  object.position.set(5, 5, 0);
+  scene.add(object);
+});
+
+objLoader.load("crt_shell4.obj", function (object) {
+  object.traverse((mesh) => {
+    mesh.material = movieMaterial;
+  });
+  object.rotation.set(0, tv1_rotation, 0);
+  object.position.set(-5, 0, 0);
+  scene.add(object);
+});
+
+objLoader.load("crt_shell5.obj", function (object) {
+  object.traverse((mesh) => {
+    mesh.material = movieMaterial;
+  });
+  object.rotation.set(0, tv1_rotation, 0);
+  object.position.set(0, 0, 0);
+  scene.add(object);
+});
+
+objLoader.load("crt_shell6.obj", function (object) {
   object.traverse((mesh) => {
     mesh.material = movieMaterial;
   });
@@ -176,11 +250,32 @@ objLoader.load("crt_shell.obj", function (object) {
   scene.add(object);
 });
 
-// function cameraProject(){
-//   secondaryCamera.rotation.x = camera.rotation.x
-//   secondaryCamera.rotation.y = camera.rotation.y
-//   secondaryCamera.rotation.z = camera.rotation.z
-// }
+objLoader.load("crt_shell7.obj", function (object) {
+  object.traverse((mesh) => {
+    mesh.material = movieMaterial;
+  });
+  object.rotation.set(0, tv1_rotation, 0);
+  object.position.set(-5, -5, 0);
+  scene.add(object);
+});
+
+objLoader.load("crt_shell8.obj", function (object) {
+  object.traverse((mesh) => {
+    mesh.material = movieMaterial;
+  });
+  object.rotation.set(0, tv1_rotation, 0);
+  object.position.set(0, -5, 0);
+  scene.add(object);
+});
+
+objLoader.load("crt_shell9.obj", function (object) {
+  object.traverse((mesh) => {
+    mesh.material = movieMaterial;
+  });
+  object.rotation.set(0, tv1_rotation, 0);
+  object.position.set(5, -5, 0);
+  scene.add(object);
+});
 
 function addStar() {
   const map = new THREE.TextureLoader().load('star.png');
@@ -198,11 +293,13 @@ fontLoader.load(
   (droidFont) => {
     let text = new TextGeometry('hello world', {
       height: 2,
-      size: 20,
+      size: 1,
+      depth: 0.01,
       font: droidFont,
     });
-    const textMaterial = new THREE.MeshNormalMaterial();
+    const textMaterial = new THREE.MeshBasicMaterial();
     const textMesh = new THREE.Mesh(text, textMaterial);
+    textMesh.position.set(0,0,-10)
     scene.add(textMesh)
   }
 )
