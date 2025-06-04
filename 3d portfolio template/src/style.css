@@ -15,7 +15,8 @@
 
 @font-face {
   font-family: 'earthbound';
-  src: url("assets/fonts/earthbound.ttf");
+  src: url("../assets/fonts/earthbound.ttf") format('truetype'),
+    url("../assets/fonts/earthbound.woff2") format('woff2');
 }
 
 html {
@@ -123,6 +124,7 @@ h1 {
   /* display: inline-block; */
   padding: 0em 1em 0em;
   float: left;
+  color: white;
 }
 
 .navcontent {
