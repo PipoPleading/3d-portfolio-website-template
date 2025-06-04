@@ -3,8 +3,9 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { OBJLoader, TextGeometry } from 'three/examples/jsm/Addons.js';
 import { GLTFLoader } from 'three/examples/jsm/Addons.js';
-import { TTFLoader } from 'three/examples/jsm/Addons.js';
+// import { TTFLoader } from 'three/examples/jsm/Addons.js';
 import { FontLoader } from 'three/examples/jsm/Addons.js';
+import { PI } from 'three/tsl';
 // import { TextGeometry } from 'three/examples/jsm/Addons.js';
 // import { getFirstObjectWithName } from './RayCastHelper.js'	
 // import {  getFirstCameraInScene, updateCameraAspect  } from './CameraHelper.js'	
@@ -12,6 +13,7 @@ const scene = new THREE.Scene();
 scene.fog = new THREE.Fog(1443592, 0, 2500) //16711845
 
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.lookAt(new THREE.Vector3(0, 0, 300));
 const listener = new THREE.AudioListener();
 camera.add(listener);
 
@@ -25,12 +27,12 @@ camera.position.set(0, 0, 30);
 
 renderer.render(scene, camera);
 
-const pointLight = new THREE.PointLight(11494500)
-pointLight.intensity = 15
-pointLight.position.set(-3,3,-3)
+// const pointLight = new THREE.PointLight(11494500)
+// pointLight.intensity = 15
+// pointLight.position.set(-3,3,-3)
 
 const ambientLight = new THREE.AmbientLight(11494500)
-scene.add(pointLight, ambientLight)
+scene.add(ambientLight)
 
 // const lightHelper = new THREE.PointLightHelper(pointLight)
 // const gridHelper = new THREE.GridHelper(200, 50);
@@ -57,7 +59,7 @@ function onDocumentKeyDown(event) {
 }
 
 const controls = new OrbitControls(camera, renderer.domElement);
-controls.enablePan = false;
+// controls.enablePan = false;
 
 // Resize handler
 function onWindowResize() {
@@ -82,7 +84,6 @@ function onWindowResize() {
 //   targetPlanePosition.y + 4,
 //   targetPlanePosition.z)
 // secondaryCamera.rotation.y = 45
-// secondaryCamera.lookAt(new THREE.Vector3(0, 5, -10));
 
 // const secondaryScene = new THREE.Scene();
 // secondaryScene.background = new THREE.Color(0xD61C4E);
@@ -599,14 +600,14 @@ fontLoader.load(
     textMesh.position.set(-3,10,-2)
     scene.add(textMesh)
 
-    let text2 = new TextGeometry('hello world', {
+    let text2 = new TextGeometry('Late Night Confessional \n\nA game I’ve been working on since October 2024 at Pincushion Heart, \nwith our current goal to get the first act of the game out as a demo \nin the coming months. \n\nLikely the most technical thing I’ve worked on up to this point.\nEvery component has been made with the Godot Engine and Gdscript \nas well as its shader language built on GLSL. \n\nCoding things from state machines, to save systems, to file management \nand manipulation all for this game has been an overall great learning \nand creative experience. \n\nCan’t thank the team enough for everything they do.', {
       height: 2,
-      size: 1,
+      size: 0.5,
       depth: 0.01,
       font: droidFont,
     });
     const textMesh2 = new THREE.Mesh(text2, textMaterial);
-    textMesh2.position.set(-3,-10,2)
+    textMesh2.position.set(-32,10,2)
     scene.add(textMesh2)
 
     let text3 = new TextGeometry('hello world', {
@@ -615,8 +616,9 @@ fontLoader.load(
       depth: 0.01,
       font: droidFont,
     });
-    const textMesh3 = new THREE.Mesh(text2, textMaterial);
+    const textMesh3 = new THREE.Mesh(text3, textMaterial);
     textMesh3.position.set(-20,0,2)
+    textMesh3.rotation.set(0,tv2_rotation+Math.PI,0)
     scene.add(textMesh3)
   }
 )
