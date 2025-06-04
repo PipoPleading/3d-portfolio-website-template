@@ -66,7 +66,7 @@ function onWindowResize() {
   // need to adjust to stay centered, and maintain ideal ratio of 16:9
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
-  rednerersetSize(window.innerWidth, window.innerHeight);
+  // rednerersetSize(window.innerWidth, window.innerHeight);
 }
 
 // const targetPlaneSize = {width: 15, height: 15}
