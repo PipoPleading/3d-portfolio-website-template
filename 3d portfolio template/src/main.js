@@ -109,31 +109,31 @@ var movieMaterial1 = new THREE.MeshBasicMaterial({
   toneMapped:false
 })
 
-// let video2 = document.getElementById("18st");
-// let videoTexture2 = new THREE.VideoTexture(video2);
+let video2 = document.getElementById("18st");
+let videoTexture2 = new THREE.VideoTexture(video2);
 
-// videoTexture2.minFilter = THREE.LinearFilter;
-// videoTexture2.magFilter = THREE.LinearFilter;
+videoTexture2.minFilter = THREE.LinearFilter;
+videoTexture2.magFilter = THREE.LinearFilter;
 
-// //making an actual texture of the given video
-// var movieMaterial2 = new THREE.MeshBasicMaterial({
-//   map: videoTexture2,
-//   side: THREE.FrontSide,
-//   toneMapped:false
-// })
+//making an actual texture of the given video
+var movieMaterial2 = new THREE.MeshBasicMaterial({
+  map: videoTexture2,
+  side: THREE.FrontSide,
+  toneMapped:false
+})
 
-// let video3 = document.getElementById("lnc");
-// let videoTexture3 = new THREE.VideoTexture(video3);
+let video3 = document.getElementById("timeslice");
+let videoTexture3 = new THREE.VideoTexture(video3);
 
-// videoTexture3.minFilter = THREE.LinearFilter;
-// videoTexture3.magFilter = THREE.LinearFilter;
+videoTexture3.minFilter = THREE.LinearFilter;
+videoTexture3.magFilter = THREE.LinearFilter;
 
-// //making an actual texture of the given video
-// var movieMaterial3 = new THREE.MeshBasicMaterial({
-//   map: videoTexture3,
-//   side: THREE.FrontSide,
-//   toneMapped:false
-// })
+//making an actual texture of the given video
+var movieMaterial3 = new THREE.MeshBasicMaterial({
+  map: videoTexture3,
+  side: THREE.FrontSide,
+  toneMapped:false
+})
 
 
 // test object to show movie material
@@ -175,11 +175,6 @@ const gltfLoader = new GLTFLoader();
 const tv1_rotation = Math.PI; 
 const tv2_rotation = Math.PI * 0.33333; 
 const tv3_rotation = Math.PI * 1.666666; 
-
-const tv2_offsetx = -9
-const tv2_offsetz = -9
-const tv3_offsetx = -9
-const tv3_offsetz = -9
 
 //#region front
 
@@ -413,7 +408,7 @@ objLoader.load("crt_shell9.obj", function (object) {
 //#region L screens
 objLoader.load("crt_shell1.obj", function (object) {
   object.traverse((mesh) => {
-    mesh.material = movieMaterial1;
+    mesh.material = movieMaterial2;
   });
   object.rotation.set(0, tv2_rotation, 0);  
   object.position.set(-3.7522, 5, -14.384);
@@ -422,7 +417,7 @@ objLoader.load("crt_shell1.obj", function (object) {
 
 objLoader.load("crt_shell2.obj", function (object) {
   object.traverse((mesh) => {
-    mesh.material = movieMaterial1;
+    mesh.material = movieMaterial2;
   });
   object.rotation.set(0, tv2_rotation, 0);
   object.position.set(-6.2522, 5, -10.0538);
@@ -431,7 +426,7 @@ objLoader.load("crt_shell2.obj", function (object) {
 
 objLoader.load("crt_shell3.obj", function (object) {
   object.traverse((mesh) => {
-    mesh.material = movieMaterial1;
+    mesh.material = movieMaterial2;
   });
   object.rotation.set(0, tv2_rotation, 0);
   object.position.set(-8.7522, 5, -5.7237);
@@ -440,7 +435,7 @@ objLoader.load("crt_shell3.obj", function (object) {
 
 objLoader.load("crt_shell4.obj", function (object) {
   object.traverse((mesh) => {
-    mesh.material = movieMaterial1;
+    mesh.material = movieMaterial2;
   });
   object.rotation.set(0, tv2_rotation, 0);
   object.position.set(-3.7522, 0, -14.384);
@@ -449,7 +444,7 @@ objLoader.load("crt_shell4.obj", function (object) {
 
 objLoader.load("crt_shell5.obj", function (object) {
   object.traverse((mesh) => {
-    mesh.material = movieMaterial1;
+    mesh.material = movieMaterial2;
   });
   object.rotation.set(0, tv2_rotation, 0);
   object.position.set(-6.2522, 0, -10.0538);
@@ -458,7 +453,7 @@ objLoader.load("crt_shell5.obj", function (object) {
 
 objLoader.load("crt_shell6.obj", function (object) {
   object.traverse((mesh) => {
-    mesh.material = movieMaterial1;
+    mesh.material = movieMaterial2;
   });
   object.rotation.set(0, tv2_rotation, 0);
   object.position.set(-8.7522, 0, -5.7237);
@@ -467,7 +462,7 @@ objLoader.load("crt_shell6.obj", function (object) {
 
 objLoader.load("crt_shell7.obj", function (object) {
   object.traverse((mesh) => {
-    mesh.material = movieMaterial1;
+    mesh.material = movieMaterial2;
   });
   object.rotation.set(0, tv2_rotation, 0);
   object.position.set(-3.7522, -5, -14.384);
@@ -476,7 +471,7 @@ objLoader.load("crt_shell7.obj", function (object) {
 
 objLoader.load("crt_shell8.obj", function (object) {
   object.traverse((mesh) => {
-    mesh.material = movieMaterial1;
+    mesh.material = movieMaterial2;
   });
   object.rotation.set(0, tv2_rotation, 0);
   object.position.set(-6.2522, -5, -10.0538);
@@ -485,7 +480,7 @@ objLoader.load("crt_shell8.obj", function (object) {
 
 objLoader.load("crt_shell9.obj", function (object) {
   object.traverse((mesh) => {
-    mesh.material = movieMaterial1;
+    mesh.material = movieMaterial2;
   });
   object.rotation.set(0, tv2_rotation, 0);
   object.position.set(-8.7522, -5, -5.7237);
@@ -495,7 +490,7 @@ objLoader.load("crt_shell9.obj", function (object) {
 //#region R screens
 objLoader.load("crt_shell1.obj", function (object) {
   object.traverse((mesh) => {
-    mesh.material = movieMaterial1;
+    mesh.material = movieMaterial3;
   });
   object.rotation.set(0, tv3_rotation, 0);  
   object.position.set(8.7522, 5, -5.7237);
@@ -504,7 +499,7 @@ objLoader.load("crt_shell1.obj", function (object) {
 
 objLoader.load("crt_shell2.obj", function (object) {
   object.traverse((mesh) => {
-    mesh.material = movieMaterial1;
+    mesh.material = movieMaterial3;
   });
   object.rotation.set(0, tv3_rotation, 0);
   object.position.set(6.2522, 5, -10.0538);
@@ -513,7 +508,7 @@ objLoader.load("crt_shell2.obj", function (object) {
 
 objLoader.load("crt_shell3.obj", function (object) {
   object.traverse((mesh) => {
-    mesh.material = movieMaterial1;
+    mesh.material = movieMaterial3;
   });
   object.rotation.set(0, tv3_rotation, 0);
   object.position.set(3.7522, 5, -14.384);
@@ -522,7 +517,7 @@ objLoader.load("crt_shell3.obj", function (object) {
 
 objLoader.load("crt_shell4.obj", function (object) {
   object.traverse((mesh) => {
-    mesh.material = movieMaterial1;
+    mesh.material = movieMaterial3;
   });
   object.rotation.set(0, tv3_rotation, 0);
   object.position.set(8.7522, 0, -5.7237);
@@ -531,7 +526,7 @@ objLoader.load("crt_shell4.obj", function (object) {
 
 objLoader.load("crt_shell5.obj", function (object) {
   object.traverse((mesh) => {
-    mesh.material = movieMaterial1;
+    mesh.material = movieMaterial3;
   });
   object.rotation.set(0, tv3_rotation, 0);
   object.position.set(6.2522, 0, -10.0538);
@@ -540,7 +535,7 @@ objLoader.load("crt_shell5.obj", function (object) {
 
 objLoader.load("crt_shell6.obj", function (object) {
   object.traverse((mesh) => {
-    mesh.material = movieMaterial1;
+    mesh.material = movieMaterial3;
   });
   object.rotation.set(0, tv3_rotation, 0);
   object.position.set(3.7522, 0, -14.384);
@@ -549,7 +544,7 @@ objLoader.load("crt_shell6.obj", function (object) {
 
 objLoader.load("crt_shell7.obj", function (object) {
   object.traverse((mesh) => {
-    mesh.material = movieMaterial1;
+    mesh.material = movieMaterial3;
   });
   object.rotation.set(0, tv3_rotation, 0);
   object.position.set(8.7522, -5, -5.7237);
@@ -558,7 +553,7 @@ objLoader.load("crt_shell7.obj", function (object) {
 
 objLoader.load("crt_shell8.obj", function (object) {
   object.traverse((mesh) => {
-    mesh.material = movieMaterial1;
+    mesh.material = movieMaterial3;
   });
   object.rotation.set(0, tv3_rotation, 0);
   object.position.set(6.2522, -5, -10.0538);
@@ -567,7 +562,7 @@ objLoader.load("crt_shell8.obj", function (object) {
 
 objLoader.load("crt_shell9.obj", function (object) {
   object.traverse((mesh) => {
-    mesh.material = movieMaterial1;
+    mesh.material = movieMaterial3;
   });
   object.rotation.set(0, tv3_rotation, 0);
   object.position.set(3.7522, -5, -14.384);
@@ -589,9 +584,9 @@ const fontLoader = new FontLoader();
 fontLoader.load(
   'node_modules/three/examples/fonts/droid/droid_serif_regular.typeface.json',
   (droidFont) => {
-    let text = new TextGeometry('hello world', {
+    let text = new TextGeometry('TimeSlice\n\nThe first place submission for Neumont’s 2024 Winter Game Jam \nthat I worked on over the course of 48 hours. \n\nWorking on this game jam felt like it marked a change in my \ngeneral approach to development and working with teams. \nI worked mostly on art, music, etc while \nthe other 3 team members handled the more technical aspects. \nMade with Aseprite, FL Studio, and Unity primarily. \nWe all worked on it in the same apartment \nso iterations were rapid. ', {
       height: 2,
-      size: 1,
+      size: 0.5,
       depth: 0.01,
       font: droidFont,
     });
@@ -611,9 +606,9 @@ fontLoader.load(
     textMesh2.position.set(-32,10,2)
     scene.add(textMesh2)
 
-    let text3 = new TextGeometry('hello world', {
+    let text3 = new TextGeometry('April 18st \n\nA game made with python in 10 days. It’s a visual novel\nand was a fun experience making something with friends. \n\nMade with Renpy, Python, Pygame, \nFL Studio, and heavy amounts of github source control. \nMaking something entirely remotely with a group of people\nthat had really never done this sort of thing\nbefore gave me a lot to teach.\nBut I think the game came together really well in the end \ndespite the logistical hurdles.\n\nI wound up learning regex and switched to \nVisual Studio Code as my primary IDE \nbecause of this project.\n\nIt was fun horsing around.', {
       height: 2,
-      size: 1,
+      size: 0.5,
       depth: 0.01,
       font: droidFont,
     });
