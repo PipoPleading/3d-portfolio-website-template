@@ -299,8 +299,28 @@ fontLoader.load(
     });
     const textMaterial = new THREE.MeshBasicMaterial();
     const textMesh = new THREE.Mesh(text, textMaterial);
-    textMesh.position.set(0,0,-10)
+    textMesh.position.set(-3,10,-2)
     scene.add(textMesh)
+
+    let text2 = new TextGeometry('hello world', {
+      height: 2,
+      size: 1,
+      depth: 0.01,
+      font: droidFont,
+    });
+    const textMesh2 = new THREE.Mesh(text2, textMaterial);
+    textMesh2.position.set(-3,-10,2)
+    scene.add(textMesh2)
+
+    let text3 = new TextGeometry('hello world', {
+      height: 2,
+      size: 1,
+      depth: 0.01,
+      font: droidFont,
+    });
+    const textMesh3 = new THREE.Mesh(text2, textMaterial);
+    textMesh3.position.set(-20,0,2)
+    scene.add(textMesh3)
   }
 )
 
