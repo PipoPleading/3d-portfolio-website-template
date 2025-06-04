@@ -48,10 +48,15 @@ h1 {
 }
 
 .footer {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   z-index: 999;
   background-color: wheat;
+  display: block;
+}
+
+.footer.active {
+  top: 100%;
 }
 
 #bio {
@@ -69,7 +74,8 @@ h1 {
   height: 90%;
   top: 10%;
   overflow: hidden;
-  background-color: green; 
+  background-color: black;
+  border: 2px solid white; 
   color: #FFF;
   transition: all 1s;
   z-index: 100;
@@ -90,7 +96,7 @@ h1 {
   background-color: #ffffff00;
 }
 
-center {
+#nav center {
   width: 100%;
   position: absolute;
   float: right;
@@ -116,11 +122,12 @@ center {
 }
 
 .navcontent:hover {
-  background-color: green;
+  background-color: #772222;
 }
 
 .navcontent:active {
-  background-color: lime;
+  /* background-color: #a8455e; */
+  background-color: #00000000;
 }
 
 .navcontent h2 {
