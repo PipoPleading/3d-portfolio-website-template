@@ -582,13 +582,6 @@ function addStar() {
 let text = 'TimeSlice\n\nThe first place submission for Neumont’s 2024 Winter Game Jam \nthat I worked on over the course of 48 hours. \n\nWorking on this game jam felt like it marked a change in my \ngeneral approach to development and working with teams. \nI worked mostly on art, music, etc while \nthe other 3 team members handled the more technical aspects. \nMade with Aseprite, FL Studio, and Unity primarily. \nWe all worked on it in the same apartment \nso iterations were rapid. ';
 let textMesh;
 
-const ttfLoader = new TTFLoader();
-ttfLoader.load("assets/fonts/earthbound.ttf"), function (json) {
-  font = new Font(json);
-
-  
-}
-
 const fontLoader = new FontLoader();
 
 fontLoader.load(
@@ -605,29 +598,42 @@ fontLoader.load(
   textMesh.rotation.set(0, tv3_rotation+Math.PI, 0);
   scene.add(textMesh);
   });
-  // (droidFont) => {
-  // });
-    // let text = new TextGeometry('TimeSlice\n\nThe first place submission for Neumont’s 2024 Winter Game Jam \nthat I worked on over the course of 48 hours. \n\nWorking on this game jam felt like it marked a change in my \ngeneral approach to development and working with teams. \nI worked mostly on art, music, etc while \nthe other 3 team members handled the more technical aspects. \nMade with Aseprite, FL Studio, and Unity primarily. \nWe all worked on it in the same apartment \nso iterations were rapid. ', {
-    //   height: 2,
-    //   size: 0.5,
-    //   depth: 0.01,
-    //   font: droidFont,
-    // });
-    // const textMaterial = new THREE.MeshBasicMaterial();
-    // const textMesh = new THREE.Mesh(text, textMaterial);
-    // textMesh.position.set(22,10,15)
-    // textMesh.rotation.set(0, tv3_rotation+Math.PI, 0)
-    // scene.add(textMesh)
 
-    // let text2 = new TextGeometry('Late Night Confessional \n\nA game I’ve been working on since October 2024 at Pincushion Heart, \nwith our current goal to get the first act of the game out as a demo \nin the coming months. \n\nLikely the most technical thing I’ve worked on up to this point.\nEvery component has been made with the Godot Engine and Gdscript \nas well as its shader language built on GLSL. \n\nCoding things from state machines, to save systems, to file management \nand manipulation all for this game has been an overall great learning \nand creative experience. \n\nCan’t thank the team enough for everything they do.', {
-    //   height: 2,
-    //   size: 0.5,
-    //   depth: 0.01,
-    //   font: droidFont,
-    // });
-    // const textMesh2 = new THREE.Mesh(text2, textMaterial);
-    // textMesh2.position.set(-32,10,2)
-    // scene.add(textMesh2)
+let text2 = 'Late Night Confessional \n\nA game I’ve been working on since October 2024 at Pincushion Heart, \nwith our current goal to get the first act of the game out as a demo \nin the coming months. \n\nLikely the most technical thing I’ve worked on up to this point.\nEvery component has been made with the Godot Engine and Gdscript \nas well as its shader language built on GLSL. \n\nCoding things from state machines, to save systems, to file management \nand manipulation all for this game has been an overall great learning \nand creative experience. \n\nCan’t thank the team enough for everything they do.';
+let textMesh2;
+
+fontLoader.load(
+  'droid_serif_regular.typeface.json', function (font) {
+    const tGeometry = new TextGeometry(text2, {
+      height: 2,
+      size: 0.5,
+      depth: 0.01,
+      font: font
+    });
+
+  textMesh2 = new THREE.Mesh(tGeometry, new THREE.MeshBasicMaterial());
+  textMesh2.position.set(-32,10,2);
+  scene.add(textMesh2);
+  });
+
+let text3 = 'Late Night Confessional \n\nA game I’ve been working on since October 2024 at Pincushion Heart, \nwith our current goal to get the first act of the game out as a demo \nin the coming months. \n\nLikely the most technical thing I’ve worked on up to this point.\nEvery component has been made with the Godot Engine and Gdscript \nas well as its shader language built on GLSL. \n\nCoding things from state machines, to save systems, to file management \nand manipulation all for this game has been an overall great learning \nand creative experience. \n\nCan’t thank the team enough for everything they do.';
+let textMesh3;
+
+fontLoader.load(
+  'droid_serif_regular.typeface.json', function (font) {
+    const tGeometry = new TextGeometry(text3, {
+      height: 2,
+      size: 0.5,
+      depth: 0.01,
+      font: font
+    });
+
+  textMesh3 = new THREE.Mesh(tGeometry, new THREE.MeshBasicMaterial());
+  textMesh3.position.set(2.75,10,-35)
+  textMesh3.rotation.set(0,tv2_rotation+Math.PI,0)
+  scene.add(textMesh3);
+  });
+
 
     // let text3 = new TextGeometry('April 18st \n\nA game made with python in 10 days. It’s a visual novel\nand was a fun experience making something with friends. \n\nMade with Renpy, Python, Pygame, \nFL Studio, and heavy amounts of github source control. \nMaking something entirely remotely with a group of people\nthat had really never done this sort of thing\nbefore gave me a lot to teach.\nBut I think the game came together really well in the end \ndespite the logistical hurdles.\n\nI wound up learning regex and switched to \nVisual Studio Code as my primary IDE \nbecause of this project.\n\nIt was fun horsing around.', {
     //   height: 2,
