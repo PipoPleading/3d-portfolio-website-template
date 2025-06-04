@@ -6,7 +6,7 @@ import { GLTFLoader } from 'three/examples/jsm/Addons.js';
 import { getFirstObjectWithName } from './RayCastHelper.js'	
 
 const scene = new THREE.Scene();
-scene.fog = new THREE.Fog(1443592, 0, 250) //16711845
+scene.fog = new THREE.Fog(1443592, 0, 2500) //16711845
 
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const listener = new THREE.AudioListener();
@@ -147,11 +147,11 @@ loader.load("crt_shell.obj", function (object) {
 // }
 
 function addStar() {
-  const map = new THREE.TextureLoader().load('circle.png');
+  const map = new THREE.TextureLoader().load('star.png');
   const material = new THREE.SpriteMaterial( {map:map, color: 16711709});
   const star = new THREE.Sprite(material);
 
-  const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(1000) );
+  const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(250) );
   star.position.set(x,y,z)
   scene.add(star)
 }
