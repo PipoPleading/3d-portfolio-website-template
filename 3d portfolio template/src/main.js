@@ -4,6 +4,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { OBJLoader } from 'three/examples/jsm/Addons.js';
 import { GLTFLoader } from 'three/examples/jsm/Addons.js';
 import { getFirstObjectWithName } from './RayCastHelper.js'	
+import {  getFirstCameraInScene, updateCameraAspect  } from './CameraHelper.js'	
 
 const scene = new THREE.Scene();
 scene.fog = new THREE.Fog(1443592, 0, 2500) //16711845
@@ -24,13 +25,14 @@ renderer.render(scene, camera);
 
 const pointLight = new THREE.PointLight(11494500)
 pointLight.intensity = 15
+pointLight.position.set(-3,3,-3)
 
 const ambientLight = new THREE.AmbientLight(11494500)
 scene.add(pointLight, ambientLight)
 
-const lightHelper = new THREE.PointLightHelper(pointLight)
+// const lightHelper = new THREE.PointLightHelper(pointLight)
 // const gridHelper = new THREE.GridHelper(200, 50);
-scene.add(lightHelper)
+// scene.add(lightHelper)
 const sound = new THREE.Audio( listener);
 const audioLoader = new THREE.AudioLoader();
 
@@ -127,16 +129,31 @@ const gltfLoader = new GLTFLoader();
 const tv1_rotation = Math.PI; // rotations are in fucking radians broooooooooooo aaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
 gltfLoader.load("crt_hollow.glb", (gltfScene) => {
-
   gltfScene.scene.rotation.set(0, tv1_rotation  , 0);
+  gltfScene.scene.position.set(0, 0, 0);
   scene.add(gltfScene.scene);
 })
+gltfLoader.load("crt_hollow.glb", (gltfScene) => {
+  gltfScene.scene.rotation.set(0, tv1_rotation  , 0);
+  gltfScene.scene.position.set(5, 0, 0);
+  scene.add(gltfScene.scene);
+})
+
 const loader = new OBJLoader();
 loader.load("crt_shell.obj", function (object) {
   object.traverse((mesh) => {
     mesh.material = movieMaterial;
   });
   object.rotation.set(0, tv1_rotation, 0);
+  scene.add(object);
+});
+
+loader.load("crt_shell.obj", function (object) {
+  object.traverse((mesh) => {
+    mesh.material = movieMaterial;
+  });
+  object.rotation.set(0, tv1_rotation, 0);
+  object.position.set(5, 0, 0);
   scene.add(object);
 });
 
