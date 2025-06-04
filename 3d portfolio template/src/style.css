@@ -47,13 +47,45 @@ h1 {
 }
 
 #bg {
-  margin-top: 100px;
+  /* margin-top: 100px; */
 }
 
 #nav {
   position: fixed;
   top: 0;
   z-index: 999;
+  min-width: 100%;
+  background-image: url(clione.gif);
+}
+
+center {
+  width: 100%;
+  position: absolute;
+  float: right;
+}
+
+#title {
+  text-align: center;
+  /* display: inline-block; */
+  padding: 0em 1em 0em;
+  float: left
+}
+
+.navcontent {
+  text-align: center;
+  display: inline-block;
+  min-width: 7%;
+  max-width: 7%;
+  min-height: 7%;
+  max-height: 7%;
+}
+
+.navcontent:hover {
+  background-color: green;
+}
+
+.navcontent:active {
+  background-color: lime;
 }
 
 .logo {
