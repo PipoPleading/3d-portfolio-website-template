@@ -1,11 +1,13 @@
 import './style.css'
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { OBJLoader } from 'three/examples/jsm/Addons.js';
+import { OBJLoader, TextGeometry } from 'three/examples/jsm/Addons.js';
 import { GLTFLoader } from 'three/examples/jsm/Addons.js';
-import { getFirstObjectWithName } from './RayCastHelper.js'	
-import {  getFirstCameraInScene, updateCameraAspect  } from './CameraHelper.js'	
-
+import { TTFLoader } from 'three/examples/jsm/Addons.js';
+import { FontLoader } from 'three/examples/jsm/Addons.js';
+// import { TextGeometry } from 'three/examples/jsm/Addons.js';
+// import { getFirstObjectWithName } from './RayCastHelper.js'	
+// import {  getFirstCameraInScene, updateCameraAspect  } from './CameraHelper.js'	
 const scene = new THREE.Scene();
 scene.fog = new THREE.Fog(1443592, 0, 2500) //16711845
 
@@ -124,6 +126,23 @@ var movieMaterial = new THREE.MeshBasicMaterial({
 // targetPlane.position.set(-15, 7.5, -12)
 
 // scene.add(targetPlane);
+
+// const ftloader = new FontLoader();
+
+// loader.load( 'assets/fonts/earthbound.ttf', function ( font ) {
+// 	const geometry = new TextGeometry( 'Hello three.js!', {
+// 		font: font,
+// 		size: 80,
+// 		depth: 5,
+// 		curveSegments: 12,
+// 		bevelEnabled: true,
+// 		bevelThickness: 10,
+// 		bevelSize: 8,
+// 		bevelOffset: 0,
+// 		bevelSegments: 5
+// 	} );
+// } );
+
 //tvs
 const gltfLoader = new GLTFLoader();
 const tv1_rotation = Math.PI; // rotations are in fucking radians broooooooooooo aaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -139,8 +158,8 @@ gltfLoader.load("crt_hollow.glb", (gltfScene) => {
   scene.add(gltfScene.scene);
 })
 
-const loader = new OBJLoader();
-loader.load("crt_shell.obj", function (object) {
+const objLoader = new OBJLoader();
+objLoader.load("crt_shell.obj", function (object) {
   object.traverse((mesh) => {
     mesh.material = movieMaterial;
   });
@@ -148,7 +167,7 @@ loader.load("crt_shell.obj", function (object) {
   scene.add(object);
 });
 
-loader.load("crt_shell.obj", function (object) {
+objLoader.load("crt_shell.obj", function (object) {
   object.traverse((mesh) => {
     mesh.material = movieMaterial;
   });
@@ -173,13 +192,29 @@ function addStar() {
   scene.add(star)
 }
 
+const fontLoader = new FontLoader();
+fontLoader.load(
+  'node_modules/three/examples/fonts/droid/droid_serif_regular.typeface.json',
+  (droidFont) => {
+    const TextGeometry = new TextGeometry('hello world', {
+      height: 2,
+      size: 10,
+      font: droidFont,
+    });
+    const textMaterial = new THREE.MeshNormalMaterial();
+    const textMesh = new THREE.Mesh(TextGeometry, textMaterial);
+    scene.add(textMesh)
+  }
+)
+
+
 Array(250).fill().forEach(addStar)
 
-function onClick(event) {
-	wheel = getFirstObjectWithName(event, window, camera, scene, "Wheel");
+// function onClick(event) {
+// 	wheel = getFirstObjectWithName(event, window, camera, scene, "Wheel");
 
-	(wheel != null) ? (shouldSpin = !shouldSpin) : null;
-}
+// 	(wheel != null) ? (shouldSpin = !shouldSpin) : null;
+// }
 
 window.addEventListener('resize', onWindowResize);
 
