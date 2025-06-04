@@ -15,7 +15,7 @@
 
 @font-face {
   font-family: 'earthbound';
-  src: url("assets/fonts/earthbound.ttf") format('truetype');
+  src: url("assets/fonts/earthbound.ttf");
 }
 
 html {
