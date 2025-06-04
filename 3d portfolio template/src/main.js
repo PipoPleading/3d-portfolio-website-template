@@ -597,7 +597,8 @@ fontLoader.load(
     });
     const textMaterial = new THREE.MeshBasicMaterial();
     const textMesh = new THREE.Mesh(text, textMaterial);
-    textMesh.position.set(-3,10,-2)
+    textMesh.position.set(22,10,15)
+    textMesh.rotation.set(0, tv3_rotation+Math.PI, 0)
     scene.add(textMesh)
 
     let text2 = new TextGeometry('Late Night Confessional \n\nA game I’ve been working on since October 2024 at Pincushion Heart, \nwith our current goal to get the first act of the game out as a demo \nin the coming months. \n\nLikely the most technical thing I’ve worked on up to this point.\nEvery component has been made with the Godot Engine and Gdscript \nas well as its shader language built on GLSL. \n\nCoding things from state machines, to save systems, to file management \nand manipulation all for this game has been an overall great learning \nand creative experience. \n\nCan’t thank the team enough for everything they do.', {
@@ -617,7 +618,7 @@ fontLoader.load(
       font: droidFont,
     });
     const textMesh3 = new THREE.Mesh(text3, textMaterial);
-    textMesh3.position.set(-20,0,2)
+    textMesh3.position.set(2.75,10,-35)
     textMesh3.rotation.set(0,tv2_rotation+Math.PI,0)
     scene.add(textMesh3)
   }
