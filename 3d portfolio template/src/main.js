@@ -1,10 +1,11 @@
 import './style.css'
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { OBJLoader } from 'three/examples/jsm/Addons.js';
+import { OBJLoader, TTFLoader } from 'three/examples/jsm/Addons.js';
 import { GLTFLoader } from 'three/examples/jsm/Addons.js';
 import { FontLoader } from 'three/examples/jsm/Addons.js';
 import { TextGeometry } from 'three/examples/jsm/Addons.js';
+import { js } from 'three/tsl';
 
 const scene = new THREE.Scene();
 scene.fog = new THREE.Fog(1443592, 0, 2500) //16711845
@@ -581,10 +582,17 @@ function addStar() {
 let text = 'TimeSlice\n\nThe first place submission for Neumont’s 2024 Winter Game Jam \nthat I worked on over the course of 48 hours. \n\nWorking on this game jam felt like it marked a change in my \ngeneral approach to development and working with teams. \nI worked mostly on art, music, etc while \nthe other 3 team members handled the more technical aspects. \nMade with Aseprite, FL Studio, and Unity primarily. \nWe all worked on it in the same apartment \nso iterations were rapid. ';
 let textMesh;
 
+const ttfLoader = new TTFLoader();
+ttfLoader.load("assets/fonts/earthbound.ttf"), function (json) {
+  font = new Font(json);
+
+  
+}
+
 const fontLoader = new FontLoader();
 
 fontLoader.load(
-  'node_modules/three/examples/fonts/droid/droid_serif_regular.typeface.json', function (font) {
+  'droid_serif_regular.typeface.json', function (font) {
     const tGeometry = new TextGeometry(text, {
       height: 2,
       size: 0.5,
