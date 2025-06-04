@@ -23,6 +23,15 @@
           document.getElementById('footer').classList.toggle('active');
         }
       }
+
+      function closeall() {
+        let bioslider = document.getElementById('bioslider');
+        let contactslider = document.getElementById('contactslider');
+
+        bioslider.classList.add('close');
+        contactslider.classList.add('close');
+        document.getElementById('footer').classList.add('active');
+      }
     </script>
   </head>
   <body>
@@ -31,11 +40,9 @@
         <h2>piperpiperpiperpiper</h2>
       </div>
       <center>
-        <a href="index.html">
-          <div class="navcontent">
-            <h2>HOME</h2>
-          </div>
-        </a>
+        <div class="navcontent" id="home" onclick="closeall()">
+          <h2>HOME</h2>
+        </div>
         <div class="navcontent" id="bio" onclick="slide('bioslider')">
           <h2>BIO</h2>
         </div>
@@ -64,13 +71,13 @@
           direction="down"
           behavior="alternate"
           class="overlap">
-          <marquee behavior="alternate">awa</marquee>
+          <marquee behavior="alternate">video</marquee>
         </marquee>
         <marquee
           direction="up"
           behavior="alternate"
           class="overlap">
-          <marquee behavior="alternate" direction="right">awa</marquee>
+          <marquee behavior="alternate" direction="right">games</marquee>
         </marquee>
       </div>
     </div>
