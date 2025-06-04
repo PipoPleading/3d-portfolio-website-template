@@ -46,8 +46,38 @@ h1 {
   text-align: center;
 }
 
-#bg {
-  /* margin-top: 100px; */
+#footer {
+  position: fixed;
+  bottom: 0;
+  z-index: 999;
+  background-color: wheat;
+}
+
+#bio {
+  display: inline-block;
+}
+
+#contact {
+  display: inline-block;
+}
+
+.slider {
+  position: absolute;
+  width: 50%;
+  left: 25%;
+  height: 90%;
+  top: 10%;
+  overflow: hidden;
+  background-color: green; 
+  color: #FFF;
+  transition: all 1s;
+  z-index: 100;
+}
+
+.slider.close {
+  top: 100%;
+  height: 0;
+  z-index: 100;
 }
 
 #nav {
@@ -55,7 +85,7 @@ h1 {
   top: 0;
   z-index: 999;
   min-width: 100%;
-  background-image: url(clione.gif);
+  background-color: #ffffff00;
 }
 
 center {

@@ -4,7 +4,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import getLayer from "./getLayer.js"
 import { OBJLoader } from 'three/examples/jsm/Addons.js';
 import { GLTFLoader } from 'three/examples/jsm/Addons.js';
-import { PI } from 'three/tsl';
+import { div, PI } from 'three/tsl';
 
 const scene = new THREE.Scene();
 scene.fog = new THREE.Fog(16711845, 0, 1000)
@@ -179,5 +179,3 @@ function animate() {
 }
 
 animate();
-
-

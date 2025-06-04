@@ -5,8 +5,31 @@
     <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Piper's Place</title>
-    <link rel="icon" type="image/png" href="public/pipericon.png">
+    <link rel="icon" type="image/png" href="pipericon.png">
     <link rel="stylesheet" href="src/style.css">
+    <script>
+      function showFooter() {
+
+      }
+
+      function hideFooter() {
+
+      }
+
+      function slide(element) {
+        let bioslider = document.getElementById('bioslider');
+        let contactslider = document.getElementById('contactslider');
+        if (element == 'bioslider' && !contactslider.classList.contains('close')) {
+          document.getElementById(element).classList.toggle('close');
+          contactslider.classList.add('close');
+        } else if (element == 'contactslider' && !bioslider.classList.contains('close')) {
+          document.getElementById(element).classList.toggle('close');
+          bioslider.classList.add('close');
+        } else {
+          document.getElementById(element).classList.toggle('close');
+        }
+      }
+    </script>
   </head>
   <body>
     <header id="nav">
@@ -19,22 +42,24 @@
             <h2>HOME</h2>
           </div>
         </a>
-        <a href="bio.html">
-          <div class="navcontent">
-            <h2>BIO</h2>
-          </div>
-        </a>
-        <a href="contact.html">
-          <div class="navcontent">
-            <h2>CONTACT</h2>
-          </div>
-        </a>
+        <div class="navcontent" id="bio" onclick="slide('bioslider')">
+          <h2>BIO</h2>
+        </div>
+        <div class="navcontent" id="contact" onclick="slide('contactslider')">
+          <h2>CONTACT</h2>
+        </div>
       </center>
     </header>
+    <div class="slider close" id="bioslider">
+      words words bio words
+    </div>
+    <div class="slider close" id="contactslider">
+      words words contact words
+    </div>
     <canvas id="bg"></canvas>
     <script type="module" src="/src/main.js"></script>
-    <footer id="nav">
-      
+    <footer id="footer">
+      <!-- <marquee>awa awa awa awa awa awa awa awa awa awa awa awa </marquee> -->
     </footer>
   </body>
   <body>
