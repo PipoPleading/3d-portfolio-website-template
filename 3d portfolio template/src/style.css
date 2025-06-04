@@ -1,5 +1,5 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: system-ui, Avenir, Helvetica, Arial, sans-serif; */
   line-height: 1.5;
   font-weight: 400;
 
@@ -14,12 +14,12 @@
 }
 
 @font-face {
-  font-family: earthbound;
+  font-family: 'earthbound';
   src: url("earthbound.ttf") format('truetype');
 }
 
-@theme{
-  --font-earth: earthbound, "sans-serif"; 
+html {
+  font-family: 'earthbound', sans-serif;
 }
 
 body {
@@ -125,7 +125,6 @@ h1 {
   /* display: inline-block; */
   padding: 0em 1em 0em;
   float: left;
-  color: #ff4278;
 }
 
 .navcontent {
