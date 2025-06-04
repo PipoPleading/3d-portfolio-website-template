@@ -196,13 +196,13 @@ const fontLoader = new FontLoader();
 fontLoader.load(
   'node_modules/three/examples/fonts/droid/droid_serif_regular.typeface.json',
   (droidFont) => {
-    const TextGeometry = new TextGeometry('hello world', {
+    let text = new TextGeometry('hello world', {
       height: 2,
-      size: 10,
+      size: 20,
       font: droidFont,
     });
     const textMaterial = new THREE.MeshNormalMaterial();
-    const textMesh = new THREE.Mesh(TextGeometry, textMaterial);
+    const textMesh = new THREE.Mesh(text, textMaterial);
     scene.add(textMesh)
   }
 )
