@@ -13,6 +13,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@font-face {
+  font-family: earthbound;
+  src: url(earthbound.ttf);
+}
+
 body {
   margin: 0;
 }
@@ -50,6 +55,7 @@ h1 {
 .footer {
   position: absolute;
   bottom: 0;
+  width: 100%;
   z-index: 999;
   background-color: wheat;
   display: block;
@@ -80,6 +86,12 @@ h1 {
   transition: all 1s;
   z-index: 100;
   border-radius: 1em;
+}
+
+.slider div {
+  font-family: earthbound;
+  font-size: 14pt;
+  padding: 2.5% 5% 0;
 }
 
 .slider.close {
