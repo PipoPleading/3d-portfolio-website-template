@@ -14,8 +14,8 @@
 }
 
 @font-face {
-  font-family: earthbound;
-  src: url(earthbound.ttf);
+  font-family: "earthbound";
+  src: url("earthbound.ttf") format('truetype');
 }
 
 body {
@@ -57,7 +57,9 @@ h1 {
   bottom: 0;
   width: 100%;
   z-index: 999;
-  background-color: wheat;
+  background-color: #00000000;
+  color: white;
+  font-family: earthbound;
   display: block;
 }
 
