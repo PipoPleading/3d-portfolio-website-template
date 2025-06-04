@@ -14,8 +14,12 @@
 }
 
 @font-face {
-  font-family: "earthbound";
+  font-family: earthbound;
   src: url("earthbound.ttf") format('truetype');
+}
+
+@theme{
+  --font-earth: earthbound, "sans-serif"; 
 }
 
 body {
