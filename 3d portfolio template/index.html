@@ -19,11 +19,12 @@
       function slide(element) {
         let bioslider = document.getElementById('bioslider');
         let contactslider = document.getElementById('contactslider');
+        
         if (element == 'bioslider' && !contactslider.classList.contains('close')) {
-          document.getElementById(element).classList.toggle('close');
+          bioslider.classList.toggle('close');
           contactslider.classList.add('close');
         } else if (element == 'contactslider' && !bioslider.classList.contains('close')) {
-          document.getElementById(element).classList.toggle('close');
+          contactslider.classList.toggle('close');
           bioslider.classList.add('close');
         } else {
           document.getElementById(element).classList.toggle('close');
@@ -34,7 +35,7 @@
   <body>
     <header id="nav">
       <div id="title">
-        <h2>piperpiperpiper</h2>
+        <h2>piperpiperpiperpiper</h2>
       </div>
       <center>
         <a href="index.html">
@@ -58,8 +59,8 @@
     </div>
     <canvas id="bg"></canvas>
     <script type="module" src="/src/main.js"></script>
-    <footer id="footer">
-      <!-- <marquee>awa awa awa awa awa awa awa awa awa awa awa awa </marquee> -->
+    <footer class="footer">
+      <marquee>awa awa awa awa awa awa awa awa awa awa awa awa </marquee>
     </footer>
   </body>
   <body>
