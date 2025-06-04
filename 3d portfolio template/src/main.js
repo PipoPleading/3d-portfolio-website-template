@@ -133,41 +133,6 @@ var movieMaterial3 = new THREE.MeshBasicMaterial({
   toneMapped:false
 })
 
-
-// test object to show movie material
-// let movieGeometry = new THREE.PlaneGeometry(25, 25, 25, 25);
-// let movieCubeScreen = new THREE.Mesh(movieGeometry, movieMaterial);
-
-// movieCubeScreen.position.set(-50, 0, -50);
-// scene.add(movieCubeScreen);
-
-// const targetMat = new THREE.MeshPhongMaterial({
-//   map: renderTarget.texture
-// });
-// const targetPlane = new THREE.Mesh(new THREE.PlaneGeometry(
-//   targetPlaneSize.width,
-//   targetPlaneSize.height, 32), targetMat);
-// targetPlane.rotation.y = 45
-// targetPlane.position.set(-15, 7.5, -12)
-
-// scene.add(targetPlane);
-
-// const ftloader = new FontLoader();
-
-// loader.load( 'assets/fonts/earthbound.ttf', function ( font ) {
-// 	const geometry = new TextGeometry( 'Hello three.js!', {
-// 		font: font,
-// 		size: 80,
-// 		depth: 5,
-// 		curveSegments: 12,
-// 		bevelEnabled: true,
-// 		bevelThickness: 10,
-// 		bevelSize: 8,
-// 		bevelOffset: 0,
-// 		bevelSegments: 5
-// 	} );
-// } );
-
 //tvs
 const gltfLoader = new GLTFLoader();
 const tv1_rotation = Math.PI; 
@@ -638,12 +603,6 @@ fontLoader.load(
 //#endregion
 
 Array(250).fill().forEach(addStar)
-
-// function onClick(event) {
-// 	wheel = getFirstObjectWithName(event, window, camera, scene, "Wheel");
-
-// 	(wheel != null) ? (shouldSpin = !shouldSpin) : null;
-// }
 
 window.addEventListener('resize', onWindowResize);
 
